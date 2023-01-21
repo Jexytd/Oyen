@@ -10,7 +10,7 @@ local function GetCar()
 end
 
 while getgenv().Car do
-    if GetCar() then
+    if GetCar() and wait(1) then
         GetCar():SetPrimaryPartCFrame(CFrame.new(-4690.5224609375, 156.72760009765625, 1110.593017578125) * CFrame.Angles(0, math.rad(101.5), 0))
 
         game:GetService("VirtualInputManager"):SendKeyEvent(true, "W", false, uwu)
