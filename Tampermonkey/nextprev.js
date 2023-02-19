@@ -1,10 +1,11 @@
 // ==UserScript==
 // @name         kodok
 // @namespace    https://github.com/Jexytd
-// @version      0.2
+// @version      0.3
 // @description  Side project kodok
 // @author       Oyen
 // @match        https://komikcast.site/chapter/*
+// @match        https://reaperscans.id/series/*
 // @match        https://example.com/chapter/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=github.com
 // @grant        none
@@ -13,18 +14,31 @@
 (function() {
     'use strict';
 
-    var next,prev;
+    var next,prev,DIVs;
     (function() {
-        const DIVs = document.getElementsByClassName('nextprev')[0];
-        for (const element of DIVs.children) {
-            if (!element.hasAttribute('rel')) { return 0 };
+        DIVs = document.getElementsByClassName('nextprev')[0];
+        if (DIVs !== undefined) {
+            for (const element of DIVs.children) {
+                if (!element.hasAttribute('rel')) { return 0 };
 
-            if (element.getAttribute('rel') == 'next') {
-                next = element;
+                if (element.getAttribute('rel') == 'next') {
+                    next = element;
+                };
+
+                if (element.getAttribute('rel') == 'prev') {
+                    prev = element;
+                };
+            }
+        }
+
+        DIVs = document.getElementsByClassName('nav-links')[0];
+        for (const element of DIVs.children) {
+            if (element.classList.contains('nav-previous')) {
+                prev = (element.children.length == 1 && element.children[0]);
             };
 
-            if (element.getAttribute('rel') == 'prev') {
-                prev = element;
+            if (element.classList.contains('nav-next')) {
+                next = (element.children.length == 1 && element.children[0]);
             };
         }
     })()
