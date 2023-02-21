@@ -5,7 +5,7 @@
 // @description  Side project kodok
 // @author       Oyen
 // @match        https://komikcast.site/chapter/*
-// @match        https://reaperscans.id/series/*
+// @match        https://shinigami.id/series/*
 // @match        https://example.com/chapter/*
 // @icon         https://www.google.com/s2/favicons?sz=64&domain=github.com
 // @grant        none
